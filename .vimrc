@@ -42,8 +42,9 @@ set number
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
-set wildignore+=*/tmp/*,*.so,*.sw[a-z],*.zip,.svn,.git,*.o,*.pyc,*.class,*.dSYM,node_modules,env
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|node_modules|_site|shovestore)$'
+set wildignore+=*/tmp/*,*.so,*.sw[a-z],*.zip,.svn,.git,*.o,*.pyc,*.class,*.dSYM,node_modules,env,installed_contracts,build
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|installed_contracts|node_modules|_site|shovestore|build)$'
+let g:ctrlp_show_hidden = 1
 
 " js beautify
 map <c-f> :Autoformat<CR>
@@ -70,3 +71,7 @@ syntax on
 set t_Co=256
 colorscheme apprentice
 
+" fix solidity highlighting
+augroup solidity
+  autocmd FileType solidity syntax sync fromstart
+augroup END
